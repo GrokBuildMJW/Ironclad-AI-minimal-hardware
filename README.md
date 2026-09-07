@@ -11,7 +11,7 @@ Public sources will live in the `ironclad` repo. This tree is the hardware idea,
 | You want | Use |
 |---|---|
 | Try Ironclad on the PC you already own | **This repo** |
-| The brain in the cloud, not on a GPU | [Cloud coder](https://github.com/GrokBuildMJW/Ironclad-AI-cloud-coder) |
+| Coding lane in the cloud; orchestrator still on Spark | [Cloud coder](https://github.com/GrokBuildMJW/Ironclad-AI-cloud-coder) |
 | Professional CI on Linux / Windows / macOS without hosted minutes | [self-hosted GitHub CI lab](https://github.com/GrokBuildMJW/Ironclad-AI-self-hosted-GitHub-CI) |
 | A local coder or orchestrator GPU | The Spark / RTX 4090 serving recipes |
 
