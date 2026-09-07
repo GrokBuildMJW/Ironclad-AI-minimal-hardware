@@ -21,10 +21,10 @@
     <text x="420" y="288" fill="#e8eef4" font-size="16" font-weight="700">ironclad server</text>
     <text x="420" y="314" fill="#8b9aab" font-size="13">127.0.0.1:8484</text>
 
-    <rect x="736" y="228" rx="12" width="292" height="120" fill="#151c24" stroke="#2a3544"/>
-    <text x="756" y="260" fill="#9b8cff" font-size="12">OPTIONAL LATER</text>
-    <text x="756" y="288" fill="#e8eef4" font-size="16" font-weight="700">a local LLM</text>
-    <text x="756" y="314" fill="#8b9aab" font-size="13">not required to boot</text>
+    <rect x="736" y="228" rx="12" width="292" height="120" fill="#151c24" stroke="#9b8cff"/>
+    <text x="756" y="260" fill="#9b8cff" font-size="12">REQUIRED FOR WORK</text>
+    <text x="756" y="288" fill="#e8eef4" font-size="16" font-weight="700">an LLM API</text>
+    <text x="756" y="314" fill="#8b9aab" font-size="13">local or external</text>
   </g>
 
   <rect x="40" y="408" rx="12" width="1020" height="120" fill="#151c24" stroke="#2a3544"/>

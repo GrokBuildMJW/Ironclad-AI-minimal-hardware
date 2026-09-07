@@ -4,7 +4,7 @@ The **smallest** way to run Ironclad: one computer, Docker Compose, loopback API
 
 Public sources will live in the `ironclad` repo. This tree is the hardware idea, not those sources.
 
-![One computer runs a client, an Ironclad container, and optionally a local LLM](docs/images/01-minimal.svg)
+![One computer runs a client, an Ironclad container, and an LLM API](docs/images/01-minimal.svg)
 
 ## When to use this
 
@@ -20,9 +20,24 @@ If you only need to *use* Ironclad, stop here. The CI lab is for *shipping* it.
 
 - One machine with **Docker Engine** and **Compose v2** (Linux, Windows, or macOS).
 - A few GB of disk for the image and two volumes.
-- No GPU required to start the server. A local LLM is optional and later.
+- An **OpenAI-compatible LLM**. Ironclad is an agent orchestrator. Without a model it will boot, take a token, and show an empty console — chat, process runs, and agent turns refuse (`orchestrator_profile` unconfigured). Spark and a 4090 are not required; **some** LLM is.
 
-That is the whole bill: electricity for one box. GitHub-hosted Actions minutes are zero because there are no Actions.
+Skip Spark/4090 in this lab by pointing the orchestrator profile at:
+
+1. **An external API** (you pay tokens, not a GPU), or
+2. **A small local server** on the same box if the machine can hold it.
+
+GitHub-hosted Actions minutes stay zero because there are no Actions. The remaining bill is electricity plus whatever that LLM costs.
+
+## What you can do without Spark
+
+| With only Docker, no LLM | With Docker + any LLM API |
+|---|---|
+| Pull the image, create a token, open `/health` and the read-only console | Chat, process runs, tools, vault work — the actual product |
+| Confirm volumes and auth | Same as a Spark lab, slower or cheaper depending on the model |
+| Nothing that thinks | Point `llm.profiles` at that `base_url` |
+
+A Spark (or RTX 4090) is how you keep tokens off a vendor meter. It is not how Ironclad “turns on.”
 
 ## Layout
 
@@ -34,6 +49,7 @@ That is the whole bill: electricity for one box. GitHub-hosted Actions minutes a
 | User / tokens | Separate Compose volume |
 | Config | Read-only bind, secrets only as `${env:NAME}` |
 | Client | Browser or Ink **on the same machine** |
+| LLM | Required for work: external API or a local OpenAI-compatible server |
 | GitHub Actions | **None** |
 
 The container stays private until you create an auth token and publish a **loopback** port. Do not bind `0.0.0.0` unless you know the LAN story.
@@ -71,11 +87,11 @@ services:
 
 Health and the console then require `Authorization: Bearer <token>`. If the profile is missing, the server refuses to open the socket. Do not work around that with an unauthenticated proxy.
 
-## Optional: a model on the same box
+## The LLM this box talks to
 
-The server boots without a GPU. For a local OpenAI-compatible model later, point Ironclad at `127.0.0.1` on that box. One GPU occupant still applies: do not run two full LLMs next to this container on 8 GB laptops.
+Configure an orchestrator profile (`base_url`, `model`, loopback or vendor host). Until that exists, agent work does not run.
 
-Serving recipes (separate repos): [Qwen3-Coder on RTX 4090](https://github.com/GrokBuildMJW/Qwen3-Coder-30B-A3B-Q4_K_M-llama.cpp-RTX-4090), [Flash-Next on DGX Spark](https://github.com/GrokBuildMJW/Qwen3.8-Flash-Next-NVFP4-SGLang-DGX-Spark).
+Local serving recipes if you add a GPU later: [Qwen3-Coder on RTX 4090](https://github.com/GrokBuildMJW/Qwen3-Coder-30B-A3B-Q4_K_M-llama.cpp-RTX-4090), [Flash-Next on DGX Spark](https://github.com/GrokBuildMJW/Qwen3.8-Flash-Next-NVFP4-SGLang-DGX-Spark). One GPU occupant: do not park a full LLM next to this container on an 8 GB laptop.
 
 ## What this is not
 
