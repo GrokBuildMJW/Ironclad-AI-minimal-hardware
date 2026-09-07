@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" role="img" aria-labelledby="t d">
+  <title id="t">Minimal Ironclad hardware</title>
+  <desc id="d">One computer runs Docker. Ironclad lives in a container. The browser or client on the same machine talks to loopback. No GitHub Actions runners.</desc>
+  <rect width="1100" height="560" fill="#0b0f14"/>
+  <text x="40" y="44" fill="#e8eef4" font-family="Segoe UI, system-ui, sans-serif" font-size="24" font-weight="700">Smallest use: one machine</text>
+  <text x="40" y="70" fill="#8b9aab" font-family="Segoe UI, system-ui, sans-serif" font-size="14">No mini-PC fleet. No Actions runners. Docker Compose on the computer you already have.</text>
+
+  <g font-family="Segoe UI, system-ui, sans-serif">
+    <rect x="40" y="100" rx="18" width="1020" height="280" fill="#1a2330" stroke="#3ee0c5" stroke-width="2"/>
+    <text x="64" y="136" fill="#3ee0c5" font-size="12" letter-spacing="1.2">YOUR COMPUTER</text>
+    <text x="64" y="172" fill="#e8eef4" font-size="22" font-weight="700">laptop, desktop, or a ThinkCentre Tiny</text>
+    <text x="64" y="204" fill="#8b9aab" font-size="15">Docker Engine + Compose. That is the whole lab.</text>
+
+    <rect x="64" y="228" rx="12" width="300" height="120" fill="#151c24" stroke="#2a3544"/>
+    <text x="84" y="260" fill="#f0a04b" font-size="12">CLIENT</text>
+    <text x="84" y="288" fill="#e8eef4" font-size="16" font-weight="700">browser or Ink</text>
+    <text x="84" y="314" fill="#8b9aab" font-size="13">same host, loopback only</text>
+
+    <rect x="400" y="228" rx="12" width="300" height="120" fill="#151c24" stroke="#2a3544"/>
+    <text x="420" y="260" fill="#3ee0c5" font-size="12">CONTAINER</text>
+    <text x="420" y="288" fill="#e8eef4" font-size="16" font-weight="700">ironclad server</text>
+    <text x="420" y="314" fill="#8b9aab" font-size="13">127.0.0.1:8484</text>
+
+    <rect x="736" y="228" rx="12" width="292" height="120" fill="#151c24" stroke="#2a3544"/>
+    <text x="756" y="260" fill="#9b8cff" font-size="12">OPTIONAL LATER</text>
+    <text x="756" y="288" fill="#e8eef4" font-size="16" font-weight="700">a local LLM</text>
+    <text x="756" y="314" fill="#8b9aab" font-size="13">not required to boot</text>
+  </g>
+
+  <rect x="40" y="408" rx="12" width="1020" height="120" fill="#151c24" stroke="#2a3544"/>
+  <text x="60" y="444" fill="#e8eef4" font-family="Segoe UI, system-ui, sans-serif" font-size="15">Not in this picture:</text>
+  <text x="60" y="470" fill="#8b9aab" font-family="Segoe UI, system-ui, sans-serif" font-size="14">GitHub Actions runners, a Windows operator RDP path, a Linux CI mini-PC,</text>
+  <text x="60" y="494" fill="#8b9aab" font-family="Segoe UI, system-ui, sans-serif" font-size="14">a Mac mini, or a dedicated GPU box. Those belong to the larger self-hosted CI lab.</text>
+</svg>
